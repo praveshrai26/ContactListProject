@@ -1,0 +1,20 @@
+<p>
+  contacts works!
+</p>
+<div *ngFor ="let k of contact">
+ 
+{{k.firstName}}
+{{k.lastName}}
+{{k.phoneNumber}}
+<button (click)="deleteContact(k)">delete</button>
+</div>
+
+<form (submit)="addContact()" >
+  fName<input type="text" [(ngModel)]="firstName" name="firstName" class="form-control">
+  LName<input type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
+PhoneNmber<input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control">
+<input type="submit">
+
+
+
+</form>
