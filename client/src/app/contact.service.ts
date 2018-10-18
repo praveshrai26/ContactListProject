@@ -27,7 +27,7 @@ val:any[];
   }
   deleteContact(id){
     console.log("in service delete method")
-return(this.http.get('http://localhost:3000/api/contact/'+id))
+return(this.http.delete('http://localhost:3000/api/contact/'+id))
   }
 }
 

@@ -1,19 +1,19 @@
-<p>
-  contacts works!
-</p>
+<div class="jumbotron">
+  <h2>WELCOME</h2>
+</div>
 <div *ngFor ="let k of contact">
  
 {{k.firstName}}
 {{k.lastName}}
 {{k.phoneNumber}}
-<button (click)="deleteContact(k)">delete</button>
+<button (click)="deleteContact(k)" class="btn btn-danger" >Delete</button>
 </div>
 
 <form (submit)="addContact()" >
-  fName<input type="text" [(ngModel)]="firstName" name="firstName" class="form-control">
-  LName<input type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
-PhoneNmber<input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control">
-<input type="submit">
+  First Name<input type="text" [(ngModel)]="firstName" name="firstName" class="form-control">
+  Last Name<input type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
+Phone Number<input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control">
+<input type="submit" class="btn btn-primary">
 
 
 

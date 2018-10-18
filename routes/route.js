@@ -51,7 +51,7 @@ else{
 });  
 
 });
-router.get("/contact/:id",function(req,res){
+router.delete("/contact/:id",function(req,res){
     console.log("IN ROUTER DELETE METHOD")
     
 contact.remove({_id:req.params.id},function(err,result){
