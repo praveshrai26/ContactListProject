@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../contact.service';
 import {Contact} from '../contact';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contacts',
@@ -14,7 +15,7 @@ export class ContactsComponent implements OnInit {
   lastName;
   phoneNumber;
   //firstName:string;
-  constructor(private contactService:ContactService) {
+  constructor(private contactService:ContactService,private route:Router) {
     
    }
 
@@ -56,6 +57,12 @@ this.contactService.addContact(contacts).subscribe(res=>
       console.log("del response is"+res.status)
     })
 
+  }
+  logout(){
+    this.contactService.logout().subscribe(res=>{
+      console.log("logged out");
+    this.route.navigate(['/login'])
+    })
   }
 
   

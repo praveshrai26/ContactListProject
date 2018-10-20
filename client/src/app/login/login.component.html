@@ -1,0 +1,14 @@
+<h3>Welcome to login</h3>
+
+<form method="POST" (submit)="onLogin()" >
+<div class="form-group">
+  <label for="uid">User ID</label>
+  <input [(ngModel)]="id" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="uid" >
+</div>
+<div class="form-group">
+  <label for="pwd">Password</label>
+  <input [(ngModel)]="pwd" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="pwd" >
+</div>
+<button type="submit"  class="btn btn-primary">Submit</button>
+
+</form>

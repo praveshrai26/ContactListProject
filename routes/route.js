@@ -1,6 +1,7 @@
 const express=require("express");
 const router=express.Router();
 const contact=require('../models/contacts');
+const login=require('../models/loginDetails')
 
 
 
@@ -8,25 +9,41 @@ var app=express();
 
 
 router.post('/login',function(req,res){
-    req.session.id=req.body.id;
-    console.log(req.session)
-    res.send('sucess')
+    console.log("in route login")
+   
+    var uid=req.body.id;
+    var password=req.body.pwd;
+ login.find({$and:[{id:uid},{pwd:password}]}).count(function(err,count){
+     if(count>0){
+        req.session.id=req.body.id;
+        console.log("true login "+count+" set session "+req.session.id)
+        res.json("passed")
+     }
+     else{
+        console.log("false login"+count)
+        res.json("failed")}
+ });
+    
+   
+   
+    
  })
 
 
-router.get('/home',function(req,res){
-    res.send("HOME")
-})
+
 router.get("/contact",function(req,res){
-if(req.session){
-    console.log(req.session.id)
+   if(req.session.id){
+       console.log("session id is "+req.session.id)
 contact.find({},function(err,contacts){
     res.json(contacts);
     
-});
-}
-else
-res.redirect('/home')
+})
+   }
+   else{
+       res.send('log in please')
+   }
+
+
 
 });
 
@@ -64,14 +81,14 @@ contact.remove({_id:req.params.id},function(err,result){
 });
 });
 router.get('/logout',function(req,res){
- req.session=null;
-         console.log(req.session)
-            res.send('logged out')
-         
-     
-    
-   
-   
+   req.session.destroy(function(err){
+       if(err){
+           console.log(err)
+       }
+       else(
+           console.log("logged out")
+       )
+   })
 })
 
 
