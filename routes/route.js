@@ -89,6 +89,7 @@ router.get('/logout',function(req,res){
            console.log("logged out")
        )
    })
+   res.json();
 })
 
 
