@@ -15,7 +15,9 @@ mongoose.connection.on('connected',function(){
 
   console.log("connection established suscessfully");
 })
-const port=3000;
+
+const port=process.env.port||8082;
+const ip=process.env.ip||"0.0.0.0"
 app.use(cors());
 
  app.use(bodyparser.json());
