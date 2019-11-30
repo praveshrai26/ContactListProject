@@ -38,8 +38,9 @@ app.get('/',function(req,res){
 
 app.use("/api",route)
 
-app.listen(port,function(){
+app.listen(port,ip,function(){
 
+  console.log("server started at ip: "+ip)
 console.log("server started at port: "+port);
 
 
