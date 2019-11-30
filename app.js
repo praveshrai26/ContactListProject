@@ -10,7 +10,7 @@ var session= require('express-session')
 var app=express();
 app.use(session({secret:'shhh'}))
 const route=require('./routes/route');
-mongoose.connect('mongodb://localhost:27017/contactlist');
+mongoose.connect('mongodb+srv://raipravesh:admin123@cluster0-xyrfs.mongodb.net/test?retryWrites=true&w=majority/contactlist');
 mongoose.connection.on('connected',function(){
 
   console.log("connection established suscessfully");
