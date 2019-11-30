@@ -8,7 +8,7 @@ const login=require('../models/loginDetails')
 var app=express();
 
 //router.use('/',express.static(''))
-router.post('/login',function(req,res){
+router.route('/login').post,function(req,res){
     console.log("in route login")
    
     var id=req.body.id;
