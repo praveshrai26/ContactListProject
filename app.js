@@ -16,12 +16,13 @@ mongoose.connection.on('connected',function(){
   console.log("connection established suscessfully");
 })
 
-const port=process.env.PORT||8082;
-const ip=process.env.IP||"0.0.0.0";
-
 app.use(cors());
 
  app.use(bodyparser.json());
+const port=process.env.PORT||8082;
+const ip=process.env.IP||"0.0.0.0";
+
+
 
  app.use('/',express.static('./dist/client'));
 
