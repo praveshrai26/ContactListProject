@@ -7,13 +7,15 @@ const login=require('../models/loginDetails')
 
 var app=express();
 
-
+//router.use('/',express.static(''))
 router.post('/login',function(req,res){
     console.log("in route login")
    
     var id=req.body.id;
     var password=req.body.pwd;
+    console.log(id,password)
  login.find({$and:[{uid:id},{pwd:password}]}).count(function(err,count){
+     console.log(err)
      if(count>0){
         req.session.id=req.body.id;
         console.log("true login "+count+" set session "+req.session.id)

@@ -10,7 +10,7 @@ var session= require('express-session')
 var app=express();
 app.use(session({secret:'shhh'}))
 const route=require('./routes/route');
-mongoose.connect('mongodb+srv://raipravesh:admin123@cluster0-xyrfs.mongodb.net/test?retryWrites=true&w=majority/contactlist');
+mongoose.connect('mongodb+srv://raipravesh:admin123@cluster0-xyrfs.mongodb.net/contactlist');
 mongoose.connection.on('connected',function(){
 
   console.log("connection established suscessfully");
@@ -20,7 +20,7 @@ app.use(cors());
 
  app.use(bodyparser.json());
 
- app.use(express.static(path.join(__dirname,"public")));
+ app.use('/',express.static('./dist/client'));
 
 
  

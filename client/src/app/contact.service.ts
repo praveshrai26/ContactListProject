@@ -9,6 +9,7 @@ import 'rxjs';
 export class ContactService {
 val:any[];
   constructor(private http:Http) { }
+  
 
   getContacts(){
     // .subscribe(res=>{this.val=res.json()}))
