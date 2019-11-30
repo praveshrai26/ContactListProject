@@ -11,9 +11,9 @@ var app=express();
 router.post('/login',function(req,res){
     console.log("in route login")
    
-    var uid=req.body.id;
+    var id=req.body.id;
     var password=req.body.pwd;
- login.find({$and:[{id:uid},{pwd:password}]}).count(function(err,count){
+ login.find({$and:[{uid:id},{pwd:password}]}).count(function(err,count){
      if(count>0){
         req.session.id=req.body.id;
         console.log("true login "+count+" set session "+req.session.id)
