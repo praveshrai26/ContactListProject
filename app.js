@@ -5,9 +5,10 @@ var bodyparser=require('body-parser');
 var cors=require('cors');
 var path=require('path');
 var session= require('express-session')
-
+var timeout = require('connect-timeout')
 
 var app=express();
+app.use(timeout('5s'))
 app.use(session({secret:'shhh'}))
 const route=require('./routes/route');
 mongoose.connect('mongodb+srv://raipravesh:admin123@cluster0-xyrfs.mongodb.net/contactlist');

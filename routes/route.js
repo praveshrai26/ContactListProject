@@ -3,14 +3,16 @@ const router=express.Router();
 const contact=require('../models/contacts');
 const login=require('../models/loginDetails')
 
+var timeout = require('connect-timeout')
 
 
 var app=express();
 
 //router.use('/',express.static(''))
-router.route('/login').post(function(req,res){
+router.route('/login',timeout('10s')).post(function(req,res){
     console.log("in route login")
-   
+    if (req.timedout) console.log("time out in login function")
+    
     var id=req.body.id;
     var password=req.body.pwd;
     console.log(id,password)
