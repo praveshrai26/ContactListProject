@@ -36,7 +36,7 @@ return(this.http.delete('/api/contact/'+id))
 
   logout(){
     console.log("in contact service logout");
-    return(this.http.get('api/logout'))
+    return(this.http.get('/api/logout'))
 
   }
 }

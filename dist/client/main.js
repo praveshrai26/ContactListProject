@@ -193,15 +193,15 @@ var ContactService = /** @class */ (function () {
         return (this.http.post('/api/login', { id: id, pwd: pwd }));
     };
     ContactService.prototype.addContact = function (contact) {
-        return (this.http.post('/api/contacts', contact));
+        return (this.http.post('http://localhost:3000/api/contacts', contact));
     };
     ContactService.prototype.deleteContact = function (id) {
         console.log("in contact service delete method");
-        return (this.http.delete('/api/contact/' + id));
+        return (this.http.delete('http://localhost:3000/api/contact/' + id));
     };
     ContactService.prototype.logout = function () {
         console.log("in contact service logout");
-        return (this.http.get('api/logout'));
+        return (this.http.get('http://localhost:3000/api/logout'));
     };
     ContactService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

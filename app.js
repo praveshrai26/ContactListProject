@@ -8,7 +8,7 @@ var session= require('express-session')
 var timeout = require('connect-timeout')
 
 var app=express();
-app.use(timeout('5s'))
+//app.use(timeout('5s'))
 app.use(session({secret:'shhh'}))
 const route=require('./routes/route');
 mongoose.connect('mongodb+srv://raipravesh:admin123@cluster0-xyrfs.mongodb.net/contactlist');
@@ -20,12 +20,12 @@ mongoose.connection.on('connected',function(){
 app.use(cors());
 
  app.use(bodyparser.json());
-const port=process.env.PORT||8082;
+const port=process.env.PORT||3000;
 const ip=process.env.IP||"0.0.0.0";
 
 
 
- app.use('/',express.static('./dist/client'));
+ app.use('/',express.static(__dirname+'/dist/client'));
 
 
  
