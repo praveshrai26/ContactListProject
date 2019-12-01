@@ -14,6 +14,20 @@ export class ContactsComponent implements OnInit {
   firstName;
   lastName;
   phoneNumber;
+  refBy;
+     currentLocation;
+      locationPref;
+      itExp;
+     rpaExp
+      noticePeriod;
+     l1;
+     l2;
+      l1Stat;
+     l2Stat;
+     l1date;
+      l2date;
+      l1Com;
+      l2Com;   
   //firstName:string;
   constructor(private contactService:ContactService,private route:Router) {
     
@@ -21,34 +35,25 @@ export class ContactsComponent implements OnInit {
 
   ngOnInit() {  
     // console.log(this.contactService.getContacts());
-    
+    if(localStorage.getItem('id_token'))
+    {
    this.contactService.getContacts().subscribe(res =>{
       this.contact =res.json();
      
 
       
     });
+  }
+  else
+  this.route.navigate(['/login'])
+  
 
   //  this.contactService.getContacts().subscribe(res =>{console.log(res.json())});
   
   //  console.log(this.val);
   //  console.log( this.contactService.getContacts());
   }
-  addContact(){
-const contacts={
-firstName:this.firstName,
-lastName:this.lastName,
-phoneNumber:this.phoneNumber}
-this.contactService.addContact(contacts).subscribe(res=>
-  {
-    console.log(res.json())
-    this.contact.push(contacts);
-  });
-  this.firstName="";
-  this.lastName="";
-  this.phoneNumber="";
-
-  }
+  
   deleteContact(k){
     console.log("in contact comp delete method")
     var index=this.contact.indexOf(k);
@@ -60,6 +65,7 @@ this.contactService.addContact(contacts).subscribe(res=>
   }
   logout(){
     this.contactService.logout().subscribe(res=>{
+      localStorage.removeItem('id_token')
       console.log("logged out");
     this.route.navigate(['/login'])
     })

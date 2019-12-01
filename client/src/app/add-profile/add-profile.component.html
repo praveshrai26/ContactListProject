@@ -1,0 +1,60 @@
+
+
+
+
+ 
+<div class="container">
+<form (submit)="addContact()" >
+  <div class="row">
+    <div class="col-md-4">
+  First Name<input type="text"  [(ngModel)]="firstName" required="required" name="firstName" class="form-control">
+  Last Name<input type="text"  [(ngModel)]="lastName" required="required" name="lastName" class="form-control">
+Phone Number<input type="text"   [(ngModel)]="phoneNumber" required="true" name="phoneNumber" class="form-control">
+</div>
+<div class="col-md-4">
+    Refered By<input type="text"  [(ngModel)]="refBy" name="refBy" class="form-control">
+    Current Location<input type="text"  [(ngModel)]="currentLocation" name="currentLocation" class="form-control">
+    Location Preference<input type="text"   [(ngModel)]="locationPref" name="locationPref" class="form-control">
+  </div>
+  <div class="col-md-4">
+      IT experience<input type="number"  [(ngModel)]="itExp" name="itExp" class="form-control">
+      RPA Expirence<input type="number"  [(ngModel)]="rpaExp" name="rpaExp" class="form-control">
+      Notice Period<input type="number"   [(ngModel)]="noticePeriod" name="noticePeriod" class="form-control">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+        L1 Name <input type="text"  [(ngModel)]="l1" name="l1" class="form-control">
+        L2 Name <input type="text"  [(ngModel)]="l2" name="l2" class="form-control">
+        
+        
+    </div>
+    <div class="col-md-3">
+        L1 Status <select  [(ngModel)]="l1Stat" name="l1Stat" class="form-control">
+          <option>Yes</option> <option>No</option> </select>
+        L2 Status <select   [(ngModel)]="l2Stat" name="l2Stat" class="form-control">
+            <option>Yes</option> <option>No</option> </select>
+        
+      
+    </div>
+    
+    <div class="col-md-3">
+        L1 Date<input type="date"   [(ngModel)]="l1date" name="l1date" class="form-control">
+        L2 Date<input type="date"   [(ngModel)]="l2date" name="l2date" class="form-control">
+      
+    </div>
+    <div class="col-md-3">
+        L1 Comment<textarea rows="1"   [(ngModel)]="l1Com" name="l1Com" class="form-control"></textarea>
+        L2 Comment<textarea rows="1"   [(ngModel)]="l2Com" name="l2Com" class="form-control"></textarea>
+      
+    </div>
+
+
+  </div>
+<input type="submit" style="margin-top: 20px;" class="btn btn-primary">
+</form>
+
+</div>
+
+
+

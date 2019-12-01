@@ -1,12 +1,14 @@
 const express=require("express");
 const router=express.Router();
 const contact=require('../models/contacts');
-const login=require('../models/loginDetails')
+const login=require('../models/loginDetails');
+var session= require('express-session')
 
 
 
 var app=express();
 
+app.use(session({secret:'shhh'}))
 //router.use('/',express.static(''))
 router.post("/login",function(req,res){
     console.log("in route login")
@@ -18,8 +20,8 @@ router.post("/login",function(req,res){
  login.find({$and:[{uid:id},{pwd:password}]}).count(function(err,count){
      console.log(err)
      if(count>0){
-        req.session.id=req.body.id;
-        console.log("true login "+count+" set session "+req.session.id)
+      
+        console.log("true login "+count)
         res.json("passed")
      }
      else{
@@ -35,16 +37,13 @@ router.post("/login",function(req,res){
 
 
 router.get("/contact",function(req,res){
-   if(req.session.id){
-       console.log("session id is "+req.session.id)
+   
 contact.find({},function(err,contacts){
     res.json(contacts);
     
 })
-   }
-   else{
-       res.send('log in please')
-   }
+   
+   
 
 
 
@@ -57,13 +56,30 @@ router.post('/contacts',function(req,res){
 let newContact = new contact({
     firstName:req.body.firstName,
     lastName:req.body.lastName,
-    phoneNumber:req.body.phoneNumber
+    phoneNumber:req.body.phoneNumber,
+    l1Date:req.body.l1date,
+    l2Date:req.body.l2date,
+    refBy:req.body.refBy,
+     currentLocation:req.body.currentLocation,
+      locationPref:req.body.locationPref,
+      itExp:req.body.itExp,
+     rpaExp:req.body.rpaExp,
+      noticePeriod:req.body.noticePeriod,
+     l1:req.body.l1,
+     l2:req.body.l2,
+      l1Stat:req.body.l1Stat,
+     l2Stat:req.body.l2Stat,
+      l1Com:req.body.l1Com,
+      l2Com:req.body.l2Com, 
 });
+console.log(newContact);
 newContact.save(function(err,contact){
+    console.log(contact.l1Date)
 if(err){
 res.json({msg : "failed to insert"});
 }
 else{
+    
     res.json({msg : "contact added sucessfully"});
 }
 

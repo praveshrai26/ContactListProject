@@ -21,9 +21,11 @@ login=false;
   
   onLogin(){
     console.log("in onLogin method of angular"+this.id)
+
     this.contactservice.login(this.id,this.pwd).subscribe(res=>{
     if(res.json()=="passed"){
     
+      localStorage.setItem('id_token','xyz'+this.id)
       this.route.navigate(['/contact'])
 
     }

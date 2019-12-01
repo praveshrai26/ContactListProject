@@ -1,22 +1,36 @@
-<div class="jumbotron">
-  <h2>WELCOME</h2>
-  <button class="btn btn-primary" (click)="logout()">Logout</button>
+
+
+<div class="jumbotron" style="height: 4cm;">
+  <h3>Welcome To Profile Tracker</h3>
+  <button class="btn btn-danger" style="margin-left:30cm;" (click)="logout()">Logout</button>
 </div>
 
-<div *ngFor ="let k of contact">
+
+<div>
+  <ul class="nav nav-tabs " >
+    <li role="presentation"><a routerLink="/contact"  >Profiles</a></li>
+    <li role="presentation"><a routerLink="/contact/add" >Add Profile</a></li>
+    
+    <!-- <li role="presentation"><a href="#">Messages</a></li> -->
+  </ul>
+</div>
+
+
+<!-- <div *ngFor ="let k of contact">
  
 {{k.firstName}}
 {{k.lastName}}
 {{k.phoneNumber}}
-<button (click)="deleteContact(k)" class="btn btn-danger" >Delete</button>
-</div>
+<button (click)="edit(k)" class='btn btn-primary'>Edit</button>
+<button style="margin-left: 10px;" (click)="deleteContact(k)" class="btn btn-danger" >Delete</button>
 
-<form (submit)="addContact()" >
-  First Name<input type="text" [(ngModel)]="firstName" name="firstName" class="form-control">
-  Last Name<input type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
-Phone Number<input type="text" [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control">
+</div> -->
+
+<app-root></app-root>
+<!-- <form (submit)="addContact()" >
+  First Name<input type="text" style="margin-left: 10px;" [(ngModel)]="firstName" name="firstName" class="form-control">
+  Last Name<input type="text" style="margin-left: 10px;" [(ngModel)]="lastName" name="lastName" class="form-control">
+Phone Number<input type="text"  style="margin-left: 10px;" [(ngModel)]="phoneNumber" name="phoneNumber" class="form-control">
 <input type="submit" class="btn btn-primary">
+</form> -->
 
-
-
-</form>

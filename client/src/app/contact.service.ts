@@ -15,7 +15,7 @@ val:any[];
     // .subscribe(res=>{this.val=res.json()}))
 
     
-   return(this.http.get('/api/contact'));
+   return(this.http.get('api/contact'));
   //  .subscribe(res=>{
   //    this.val = res.json();
   //   });
@@ -31,12 +31,12 @@ login(id,pwd){
   }
   deleteContact(id){
     console.log("in contact service delete method")
-return(this.http.delete('/api/contact/'+id))
+return(this.http.delete('api/contact/'+id))
   }
 
   logout(){
     console.log("in contact service logout");
-    return(this.http.get('/api/logout'))
+    return(this.http.get('api/logout'))
 
   }
 }

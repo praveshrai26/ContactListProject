@@ -1,2 +1,59 @@
 
-<app-contacts></app-contacts>
+
+
+<table class="table table-striped">
+        <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone Number</th>
+          <th>Refered By</th>
+          <th>Current Location</th>
+          <th>Location Preference</th>
+          <th>IT Exp  </th>
+          <th>RPA Exp</th>
+          <th>Notice Period</th>
+          <th>L1 Name</th>
+          <th>L1 Date</th>
+          <th>L1 Status</th>
+          <th>L1 Comments</th>
+          <th>L2 Name</th>
+          <th>L2 Date</th>
+          
+          <th>L2 Status</th>
+          <th>L2 Comments</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor ="let k of contact">
+               <td>{{k.firstName}}</td>
+                <td>{{k.lastName}}</td>
+                <td>{{k.phoneNumber}}</td>
+                <td>{{k.refBy}}</td>
+                <td> {{k.currentLocation}}</td>
+                <td>{{k.locationPref}}</td>
+                <td>{{k.itExp}}</td>
+                <td>{{k.rpaExp}}</td>      
+                <td> {{k.noticePeriod}}</td>
+                <td>{{k.l1}}</td>
+                <td>{{k.l1Date|date:'dd/MM/yy'}}</td>
+                <td>{{k.l1Stat}}</td>
+                <td>{{k.l1Com}}</td>
+                <td>{{k.l2}}</td>
+                <td>{{k.l2Date|date:'dd/MM/yy'}}</td>
+                <td>{{k.l2Stat}}</td>
+                <td>{{k.l2Com}}</td>
+                
+                
+        <td>        <button (click)="edit(k)" class='btn btn-primary'>Edit</button></td>
+    <td><button style="margin-left: 10px;" (click)="deleteContact(k)" class="btn btn-danger" >Delete</button></td>
+        </tr>
+        </tbody>
+      </table>
+
+
+
+
+ 
+    
+

@@ -8,25 +8,46 @@ import { ContactService } from './contact.service';
 import{FormsModule} from '@angular/forms';
 import{RouterModule} from '@angular/router';
 import { HomeComponentComponent } from './home-component/home-component.component';
-import { LoginComponent } from './login/login.component'
+import { LoginComponent } from './login/login.component';
+import{AddProfileComponent} from './add-profile/add-profile.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactsComponent,
     HomeComponentComponent,
-    LoginComponent
+    LoginComponent,
+    AddProfileComponent
+
   ],
   imports: [
     HttpModule,
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot([
+   
+    
+    
+    RouterModule.forRoot( [
       {path:'home',component:HomeComponentComponent},
-      {path:'contact',component:ContactsComponent},
+      {path:'contact',component:ContactsComponent,
+      children:[
+        {
+         path : 'add',
+         component: AddProfileComponent
+        },
+        {
+          path : 'profile',
+          component: HomeComponentComponent
+         },
+         {
+          path : '',
+          component: HomeComponentComponent
+         }
+      ]},
       {path:'login',component:LoginComponent},
       {path:'',component:LoginComponent}
-    ])
+    ],{useHash: true})
   ],
   providers: [ContactService],
   bootstrap: [AppComponent]
