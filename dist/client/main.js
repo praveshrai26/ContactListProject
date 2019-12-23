@@ -155,7 +155,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>"
+module.exports = "\r\n<div  >\r\n\r\n        <!-- Copyright -->\r\n        <div class=\" text-right  py-1 \" >© 2019 Pravesh Rai\r\n          \r\n        </div>\r\n        <!-- Copyright -->\r\n      \r\n    </div>\r\n      \r\n      <router-outlet></router-outlet>"
 
 /***/ }),
 
@@ -216,12 +216,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_component_home_component_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home-component/home-component.component */ "./src/app/home-component/home-component.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
 /* harmony import */ var _add_profile_add_profile_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./add-profile/add-profile.component */ "./src/app/add-profile/add-profile.component.ts");
+/* harmony import */ var _profile_details_profile_details_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./profile-details/profile-details.component */ "./src/app/profile-details/profile-details.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -243,7 +245,8 @@ var AppModule = /** @class */ (function () {
                 _contacts_contacts_component__WEBPACK_IMPORTED_MODULE_3__["ContactsComponent"],
                 _home_component_home_component_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponentComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"],
-                _add_profile_add_profile_component__WEBPACK_IMPORTED_MODULE_10__["AddProfileComponent"]
+                _add_profile_add_profile_component__WEBPACK_IMPORTED_MODULE_10__["AddProfileComponent"],
+                _profile_details_profile_details_component__WEBPACK_IMPORTED_MODULE_11__["ProfileDetailsComponent"]
             ],
             imports: [
                 _node_modules_angular_http__WEBPACK_IMPORTED_MODULE_4__["HttpModule"],
@@ -258,12 +261,12 @@ var AppModule = /** @class */ (function () {
                                 component: _add_profile_add_profile_component__WEBPACK_IMPORTED_MODULE_10__["AddProfileComponent"]
                             },
                             {
-                                path: 'profile',
+                                path: 'profile/:id',
                                 component: _home_component_home_component_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponentComponent"]
                             },
                             {
                                 path: '',
-                                component: _home_component_home_component_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponentComponent"]
+                                component: _profile_details_profile_details_component__WEBPACK_IMPORTED_MODULE_11__["ProfileDetailsComponent"]
                             }
                         ] },
                     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_9__["LoginComponent"] },
@@ -310,6 +313,9 @@ var ContactService = /** @class */ (function () {
     function ContactService(http) {
         this.http = http;
     }
+    ContactService.prototype.getContactByName = function (name) {
+        return (this.http.get('/api/contact/' + name));
+    };
     ContactService.prototype.getContacts = function () {
         // .subscribe(res=>{this.val=res.json()}))
         return (this.http.get('api/contact'));
@@ -328,11 +334,11 @@ var ContactService = /** @class */ (function () {
     };
     ContactService.prototype.deleteContact = function (id) {
         console.log("in contact service delete method");
-        return (this.http.delete('api/contact/' + id));
+        return (this.http.delete('/api/contact/' + id));
     };
     ContactService.prototype.logout = function () {
         console.log("in contact service logout");
-        return (this.http.get('api/logout'));
+        return (this.http.get('/api/logout'));
     };
     ContactService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -365,7 +371,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n<div class=\"jumbotron\" style=\"height: 4cm;\">\r\n  <h3>Welcome To Profile Tracker</h3>\r\n  <button class=\"btn btn-danger\" style=\"margin-left:30cm;\" (click)=\"logout()\">Logout</button>\r\n</div>\r\n\r\n\r\n<div>\r\n  <ul class=\"nav nav-tabs \" >\r\n    <li role=\"presentation\"><a href=\"/contact\"  >Profiles</a></li>\r\n    <li role=\"presentation\"><a href=\"contact/add\" >Add Profile</a></li>\r\n    <!-- <li role=\"presentation\"><a href=\"#\">Messages</a></li> -->\r\n  </ul>\r\n</div>\r\n\r\n\r\n<!-- <div *ngFor =\"let k of contact\">\r\n \r\n{{k.firstName}}\r\n{{k.lastName}}\r\n{{k.phoneNumber}}\r\n<button (click)=\"edit(k)\" class='btn btn-primary'>Edit</button>\r\n<button style=\"margin-left: 10px;\" (click)=\"deleteContact(k)\" class=\"btn btn-danger\" >Delete</button>\r\n\r\n</div> -->\r\n\r\n<app-root></app-root>\r\n<!-- <form (submit)=\"addContact()\" >\r\n  First Name<input type=\"text\" style=\"margin-left: 10px;\" [(ngModel)]=\"firstName\" name=\"firstName\" class=\"form-control\">\r\n  Last Name<input type=\"text\" style=\"margin-left: 10px;\" [(ngModel)]=\"lastName\" name=\"lastName\" class=\"form-control\">\r\nPhone Number<input type=\"text\"  style=\"margin-left: 10px;\" [(ngModel)]=\"phoneNumber\" name=\"phoneNumber\" class=\"form-control\">\r\n<input type=\"submit\" class=\"btn btn-primary\">\r\n</form> -->\r\n\r\n"
+module.exports = "\r\n\r\n<div class=\"jumbotron \" style=\"height: 4cm;\">\r\n    \r\n  <h3>Welcome To Profile Tracker</h3>\r\n  \r\n  <button class=\"btn btn-danger\" style=\"margin-left:30cm;\" (click)=\"logout()\">Logout</button>\r\n  \r\n</div>\r\n\r\n\r\n<div>\r\n  <ul class=\"nav nav-tabs \" >\r\n    <li role=\"presentation\"><a routerLink=\"/contact\"  >Home</a></li>\r\n    <li role=\"presentation\"><a routerLink=\"/contact/add\" >Add Profile</a></li>\r\n    \r\n    <!-- <li role=\"presentation\"><a href=\"#\">Messages</a></li> -->\r\n  </ul>\r\n</div>\r\n\r\n\r\n<!-- <div *ngFor =\"let k of contact\">\r\n \r\n{{k.firstName}}\r\n{{k.lastName}}\r\n{{k.phoneNumber}}\r\n<button (click)=\"edit(k)\" class='btn btn-primary'>Edit</button>\r\n<button style=\"margin-left: 10px;\" (click)=\"deleteContact(k)\" class=\"btn btn-danger\" >Delete</button>\r\n\r\n</div> -->\r\n\r\n<app-root></app-root>\r\n<!-- <form (submit)=\"addContact()\" >\r\n  First Name<input type=\"text\" style=\"margin-left: 10px;\" [(ngModel)]=\"firstName\" name=\"firstName\" class=\"form-control\">\r\n  Last Name<input type=\"text\" style=\"margin-left: 10px;\" [(ngModel)]=\"lastName\" name=\"lastName\" class=\"form-control\">\r\nPhone Number<input type=\"text\"  style=\"margin-left: 10px;\" [(ngModel)]=\"phoneNumber\" name=\"phoneNumber\" class=\"form-control\">\r\n<input type=\"submit\" class=\"btn btn-primary\">\r\n</form> -->\r\n\r\n"
 
 /***/ }),
 
@@ -463,7 +469,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\r\n\r\n<table class=\"table table-striped\">\r\n        <thead>\r\n        <tr>\r\n          <th>First Name</th>\r\n          <th>Last Name</th>\r\n          <th>Phone Number</th>\r\n          <th>Refered By</th>\r\n          <th>Current Location</th>\r\n          <th>Location Preference</th>\r\n          <th>IT Exp  </th>\r\n          <th>RPA Exp</th>\r\n          <th>Notice Period</th>\r\n          <th>L1 Name</th>\r\n          <th>L1 Date</th>\r\n          <th>L1 Status</th>\r\n          <th>L1 Comments</th>\r\n          <th>L2 Name</th>\r\n          <th>L2 Date</th>\r\n          \r\n          <th>L2 Status</th>\r\n          <th>L2 Comments</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <tr *ngFor =\"let k of contact\">\r\n               <td>{{k.firstName}}</td>\r\n                <td>{{k.lastName}}</td>\r\n                <td>{{k.phoneNumber}}</td>\r\n                <td>{{k.refBy}}</td>\r\n                <td> {{k.currentLocation}}</td>\r\n                <td>{{k.locationPref}}</td>\r\n                <td>{{k.itExp}}</td>\r\n                <td>{{k.rpaExp}}</td>      \r\n                <td> {{k.noticePeriod}}</td>\r\n                <td>{{k.l1}}</td>\r\n                <td>{{k.l1Date|date:'dd/MM/yy'}}</td>\r\n                <td>{{k.l1Stat}}</td>\r\n                <td>{{k.l1Com}}</td>\r\n                <td>{{k.l2}}</td>\r\n                <td>{{k.l2Date|date:'dd/MM/yy'}}</td>\r\n                <td>{{k.l2Stat}}</td>\r\n                <td>{{k.l2Com}}</td>\r\n                \r\n                \r\n        <td>        <button (click)=\"edit(k)\" class='btn btn-primary'>Edit</button></td>\r\n    <td><button style=\"margin-left: 10px;\" (click)=\"deleteContact(k)\" class=\"btn btn-danger\" >Delete</button></td>\r\n        </tr>\r\n        </tbody>\r\n      </table>\r\n\r\n\r\n\r\n\r\n \r\n    \r\n\r\n"
+module.exports = "\r\n\r\n\r\n\r\n      <form *ngFor =\"let k of contact\" >\r\n        <div class=\"form-group row\">\r\n            <label class=\"col-sm-2 col-form-label\">First Name :</label>\r\n            \r\n              <label class=\"col-sm-2 col-form-label\">{{k.firstName}}</label>\r\n              <label class=\"col-sm-2 col-form-label\">Last Name :</label>\r\n              <label class=\"col-sm-2 col-form-label\">{{k.lastName}}</label>\r\n            \r\n        </div>\r\n\r\n  \r\n\r\n      <div class=\"form-group row\">\r\n        <label class=\"col-sm-2 col-form-label\">Phone Number :</label>\r\n        \r\n          <label class=\"col-sm-2 col-form-label\">{{k.phoneNumber}}</label>\r\n          <label class=\"col-sm-2 col-form-label\">Refered By :</label>\r\n          <label class=\"col-sm-2 col-form-label\">{{k.refBy}}</label>\r\n    </div>\r\n\r\n    \r\n\r\n  <div class=\"form-group row\">\r\n    <label class=\"col-sm-2 col-form-label\">Current Location :</label>\r\n    \r\n      <label class=\"col-sm-2 col-form-label\">{{k.currentLocation}}</label>\r\n      <label class=\"col-sm-2 col-form-label\">Location Preference :</label>\r\n      <label class=\"col-sm-2 col-form-label\">{{k.locationPref}}</label>\r\n</div>\r\n\r\n\r\n\r\n<div class=\"form-group row\">\r\n  <label class=\"col-sm-2 col-form-label\">Total IT Expirence :</label>\r\n  \r\n    <label class=\"col-sm-2 col-form-label\">{{k.itExp}}</label>\r\n   <label class=\"col-sm-2 col-form-label\">Total RPA Expirence :</label>\r\n  \r\n    <label class=\"col-sm-2 col-form-label\">{{k.rpaExp}}</label>\r\n \r\n</div>\r\n\r\n\r\n\r\n<div class=\"form-group row\">\r\n  <label class=\"col-sm-2 col-form-label\">Level 1 Name :</label>\r\n  \r\n    <label class=\"col-sm-2 col-form-label\">{{k.l1}}</label>\r\n    <label class=\"col-sm-2 col-form-label\">L1 Date of Inteview :</label>\r\n      <label class=\"col-sm-2 col-form-label\">{{k.l1Date|date:'dd/MM/yy'}}</label>\r\n  \r\n</div>\r\n<div class=\"form-group row\">\r\n  <label class=\"col-sm-2 col-form-label\">Level 1 Status :</label>\r\n  \r\n    <label class=\"col-sm-2 col-form-label\">{{k.l1Stat}}</label>\r\n    \r\n      <label class=\"col-sm-2 col-form-label\">L1 Comment :</label>\r\n      <label class=\"col-sm-2 col-form-label\">{{k.l1Com}}</label>\r\n</div>\r\n\r\n\r\n<div class=\"form-group row\">\r\n  <label class=\"col-sm-2 col-form-label\">Level 2 Name :</label>\r\n  \r\n    <label class=\"col-sm-2 col-form-label\">{{k.l2}}</label>\r\n    <label class=\"col-sm-2 col-form-label\">L2 Date of Inteview :</label>\r\n      <label class=\"col-sm-2 col-form-label\">{{k.l2Date|date:'dd/MM/yy'}}</label>\r\n      \r\n</div>\r\n<div class=\"form-group row\">\r\n  <label class=\"col-sm-2 col-form-label\">L2 Status :</label>\r\n  <label class=\"col-sm-2 col-form-label\">{{k.l2Stat}}</label>\r\n  <label class=\"col-sm-2 col-form-label\">L2 Comments :</label>\r\n  <label class=\"col-sm-2 col-form-label\">{{k.l2Com}}</label>\r\n\r\n</div>\r\n\r\n\r\n\r\n\r\n        \r\n        <div class=\"form-group row\">\r\n            <div >\r\n                <button type=\"submit\" class=\"btn btn-primary\"> Edit </button>\r\n   \r\n              <button style=\"margin-left: 10px;\" (click)=\"deleteContact(k)\" class=\"btn btn-danger\" >Delete</button>\r\n            </div>\r\n        </div>\r\n    </form>\r\n\r\n\r\n\r\n \r\n    \r\n\r\n"
 
 /***/ }),
 
@@ -494,19 +500,21 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var HomeComponentComponent = /** @class */ (function () {
     //firstName:string
-    function HomeComponentComponent(contactService, route) {
+    function HomeComponentComponent(contactService, route, router) {
+        var _this = this;
         this.contactService = contactService;
         this.route = route;
-    }
-    HomeComponentComponent.prototype.ngOnInit = function () {
-        var _this = this;
+        this.firstName = router.snapshot.params['id'];
+        console.log(this.firstName);
         if (localStorage.getItem('id_token')) {
-            this.contactService.getContacts().subscribe(function (res) {
+            this.contactService.getContactByName(this.firstName).subscribe(function (res) {
                 _this.contact = res.json();
             });
         }
         else
             this.route.navigate(['/login']);
+    }
+    HomeComponentComponent.prototype.ngOnInit = function () {
     };
     HomeComponentComponent.prototype.deleteContact = function (k) {
         console.log("in contact comp delete method");
@@ -515,6 +523,7 @@ var HomeComponentComponent = /** @class */ (function () {
         this.contactService.deleteContact(k._id).subscribe(function (res) {
             console.log("del response is" + res.status);
         });
+        this.route.navigate(['/contact']);
     };
     HomeComponentComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -522,7 +531,7 @@ var HomeComponentComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./home-component.component.html */ "./src/app/home-component/home-component.component.html"),
             styles: [__webpack_require__(/*! ./home-component.component.css */ "./src/app/home-component/home-component.component.css")]
         }),
-        __metadata("design:paramtypes", [_contact_service__WEBPACK_IMPORTED_MODULE_2__["ContactService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_contact_service__WEBPACK_IMPORTED_MODULE_2__["ContactService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]])
     ], HomeComponentComponent);
     return HomeComponentComponent;
 }());
@@ -549,7 +558,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Welcome to login</h3>\r\n\r\n<form method=\"POST\" (submit)=\"onLogin()\" >\r\n<div class=\"form-group\">\r\n  <label for=\"uid\">User ID</label>\r\n  <input [(ngModel)]=\"id\" [ngModelOptions]=\"{standalone: true}\" type=\"text\" class=\"form-control\" id=\"uid\" >\r\n</div>\r\n<div class=\"form-group\">\r\n  <label for=\"pwd\">Password</label>\r\n  <input [(ngModel)]=\"pwd\" [ngModelOptions]=\"{standalone: true}\" type=\"password\" class=\"form-control\" id=\"pwd\" >\r\n</div>\r\n<button type=\"submit\"  class=\"btn btn-primary\">Submit</button>\r\n\r\n</form>"
+module.exports = "<h3>Please Login </h3>\r\n\r\n<form method=\"POST\" (submit)=\"onLogin()\" >\r\n<div class=\"form-group\">\r\n  <label for=\"uid\">User ID</label>\r\n  <input [(ngModel)]=\"id\" [ngModelOptions]=\"{standalone: true}\" type=\"text\" class=\"form-control\" id=\"uid\" >\r\n</div>\r\n<div class=\"form-group\">\r\n  <label for=\"pwd\">Password</label>\r\n  <input [(ngModel)]=\"pwd\" [ngModelOptions]=\"{standalone: true}\" type=\"password\" class=\"form-control\" id=\"pwd\" >\r\n</div>\r\n<button type=\"submit\"  class=\"btn btn-primary\">Submit</button>\r\n\r\n</form>\r\n\r\n"
 
 /***/ }),
 
@@ -608,6 +617,83 @@ var LoginComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_contact_service__WEBPACK_IMPORTED_MODULE_1__["ContactService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/profile-details/profile-details.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/profile-details/profile-details.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/profile-details/profile-details.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/profile-details/profile-details.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col-sm-6 col-md-2\"*ngFor =\"let k of contact\">\n    <div class=\"thumbnail\" >\n      \n      <div class=\"caption\">\n        <h4>{{k.firstName}} {{k.lastName}}</h4>\n        <p>{{k.phoneNumber}}</p>\n        \n        <p><a [routerLink]=\"['profile',k.firstName]\"  class=\"btn btn-primary\" role=\"button\">View</a></p>\n      </div>\n    </div>\n  </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/profile-details/profile-details.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/profile-details/profile-details.component.ts ***!
+  \**************************************************************/
+/*! exports provided: ProfileDetailsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfileDetailsComponent", function() { return ProfileDetailsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _contact_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../contact.service */ "./src/app/contact.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ProfileDetailsComponent = /** @class */ (function () {
+    function ProfileDetailsComponent(contactService, route) {
+        this.contactService = contactService;
+        this.route = route;
+    }
+    ProfileDetailsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (localStorage.getItem('id_token')) {
+            this.contactService.getContacts().subscribe(function (res) {
+                _this.contact = res.json();
+            });
+        }
+        else
+            this.route.navigate(['/login']);
+    };
+    ProfileDetailsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-profile-details',
+            template: __webpack_require__(/*! ./profile-details.component.html */ "./src/app/profile-details/profile-details.component.html"),
+            styles: [__webpack_require__(/*! ./profile-details.component.css */ "./src/app/profile-details/profile-details.component.css")]
+        }),
+        __metadata("design:paramtypes", [_contact_service__WEBPACK_IMPORTED_MODULE_2__["ContactService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], ProfileDetailsComponent);
+    return ProfileDetailsComponent;
 }());
 
 

@@ -1,56 +1,97 @@
 
 
 
-<table class="table table-striped">
-        <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Phone Number</th>
-          <th>Refered By</th>
-          <th>Current Location</th>
-          <th>Location Preference</th>
-          <th>IT Exp  </th>
-          <th>RPA Exp</th>
-          <th>Notice Period</th>
-          <th>L1 Name</th>
-          <th>L1 Date</th>
-          <th>L1 Status</th>
-          <th>L1 Comments</th>
-          <th>L2 Name</th>
-          <th>L2 Date</th>
-          
-          <th>L2 Status</th>
-          <th>L2 Comments</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor ="let k of contact">
-               <td>{{k.firstName}}</td>
-                <td>{{k.lastName}}</td>
-                <td>{{k.phoneNumber}}</td>
-                <td>{{k.refBy}}</td>
-                <td> {{k.currentLocation}}</td>
-                <td>{{k.locationPref}}</td>
-                <td>{{k.itExp}}</td>
-                <td>{{k.rpaExp}}</td>      
-                <td> {{k.noticePeriod}}</td>
-                <td>{{k.l1}}</td>
-                <td>{{k.l1Date|date:'dd/MM/yy'}}</td>
-                <td>{{k.l1Stat}}</td>
-                <td>{{k.l1Com}}</td>
-                <td>{{k.l2}}</td>
-                <td>{{k.l2Date|date:'dd/MM/yy'}}</td>
-                <td>{{k.l2Stat}}</td>
-                <td>{{k.l2Com}}</td>
-                
-                
-        <td>        <button (click)="edit(k)" class='btn btn-primary'>Edit</button></td>
-    <td><button style="margin-left: 10px;" (click)="deleteContact(k)" class="btn btn-danger" >Delete</button></td>
-        </tr>
-        </tbody>
-      </table>
 
+      <form *ngFor ="let k of contact" >
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">First Name :</label>
+            
+              <label class="col-sm-2 col-form-label">{{k.firstName}}</label>
+              <label class="col-sm-2 col-form-label">Last Name :</label>
+              <label class="col-sm-2 col-form-label">{{k.lastName}}</label>
+            
+        </div>
+
+  
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Phone Number :</label>
+        
+          <label class="col-sm-2 col-form-label">{{k.phoneNumber}}</label>
+          <label class="col-sm-2 col-form-label">Refered By :</label>
+          <label class="col-sm-2 col-form-label">{{k.refBy}}</label>
+    </div>
+
+    
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Current Location :</label>
+    
+      <label class="col-sm-2 col-form-label">{{k.currentLocation}}</label>
+      <label class="col-sm-2 col-form-label">Location Preference :</label>
+      <label class="col-sm-2 col-form-label">{{k.locationPref}}</label>
+</div>
+
+
+
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Total IT Expirence :</label>
+  
+    <label class="col-sm-2 col-form-label">{{k.itExp}}</label>
+   <label class="col-sm-2 col-form-label">Total RPA Expirence :</label>
+  
+    <label class="col-sm-2 col-form-label">{{k.rpaExp}}</label>
+ 
+</div>
+
+
+
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Level 1 Name :</label>
+  
+    <label class="col-sm-2 col-form-label">{{k.l1}}</label>
+    <label class="col-sm-2 col-form-label">L1 Date of Inteview :</label>
+      <label class="col-sm-2 col-form-label">{{k.l1Date|date:'dd/MM/yy'}}</label>
+  
+</div>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Level 1 Status :</label>
+  
+    <label class="col-sm-2 col-form-label">{{k.l1Stat}}</label>
+    
+      <label class="col-sm-2 col-form-label">L1 Comment :</label>
+      <label class="col-sm-2 col-form-label">{{k.l1Com}}</label>
+</div>
+
+
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">Level 2 Name :</label>
+  
+    <label class="col-sm-2 col-form-label">{{k.l2}}</label>
+    <label class="col-sm-2 col-form-label">L2 Date of Inteview :</label>
+      <label class="col-sm-2 col-form-label">{{k.l2Date|date:'dd/MM/yy'}}</label>
+      
+</div>
+<div class="form-group row">
+  <label class="col-sm-2 col-form-label">L2 Status :</label>
+  <label class="col-sm-2 col-form-label">{{k.l2Stat}}</label>
+  <label class="col-sm-2 col-form-label">L2 Comments :</label>
+  <label class="col-sm-2 col-form-label">{{k.l2Com}}</label>
+
+</div>
+
+
+
+
+        
+        <div class="form-group row">
+            <div >
+                <button type="submit" class="btn btn-primary"> Edit </button>
+   
+              <button style="margin-left: 10px;" (click)="deleteContact(k)" class="btn btn-danger" >Delete</button>
+            </div>
+        </div>
+    </form>
 
 
 

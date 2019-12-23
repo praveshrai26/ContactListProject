@@ -10,6 +10,7 @@ import{RouterModule} from '@angular/router';
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { LoginComponent } from './login/login.component';
 import{AddProfileComponent} from './add-profile/add-profile.component';
+import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import{AddProfileComponent} from './add-profile/add-profile.component';
     ContactsComponent,
     HomeComponentComponent,
     LoginComponent,
-    AddProfileComponent
+    AddProfileComponent,
+    ProfileDetailsComponent
 
   ],
   imports: [
@@ -37,12 +39,12 @@ import{AddProfileComponent} from './add-profile/add-profile.component';
          component: AddProfileComponent
         },
         {
-          path : 'profile',
+          path : 'profile/:id',
           component: HomeComponentComponent
          },
          {
           path : '',
-          component: HomeComponentComponent
+          component: ProfileDetailsComponent
          }
       ]},
       {path:'login',component:LoginComponent},

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ContactService } from '../contact.service';
 import {Contact} from '../contact';
+import { combineLatest } from 'rxjs';
+
 
 @Component({
   selector: 'app-home-component',
@@ -31,12 +33,12 @@ export class HomeComponentComponent implements OnInit {
       l2Com;   
   //firstName:string
 
-  constructor(private contactService:ContactService,private route:Router) { }
-
-  ngOnInit() {
-    if(localStorage.getItem('id_token'))
+  constructor(private contactService:ContactService,private route:Router, router:ActivatedRoute) {
+this.firstName=router.snapshot.params['id'];
+console.log(this.firstName);
+if(localStorage.getItem('id_token'))
     {
-   this.contactService.getContacts().subscribe(res =>{
+   this.contactService.getContactByName(this.firstName).subscribe(res =>{
       this.contact =res.json();
      
 
@@ -45,6 +47,12 @@ export class HomeComponentComponent implements OnInit {
   }
   else
   this.route.navigate(['/login'])
+	
+ 
+    }
+
+  ngOnInit() {
+    
   }
   deleteContact(k){
     console.log("in contact comp delete method")
@@ -53,6 +61,7 @@ export class HomeComponentComponent implements OnInit {
     this.contactService.deleteContact(k._id).subscribe(res=>{
       console.log("del response is"+res.status)
     })
+    this.route.navigate(['/contact'])
 
 }
 }

@@ -87,6 +87,26 @@ else{
 });  
 
 });
+
+router.get("/contact/:id",function(req,res){
+
+console.log(req.params.id);
+contact.find({firstName:req.params.id},function(err,contacts){
+    if(err){
+        console.log(err)
+    }
+    else
+    {
+        console.log(contacts)
+    res.json(contacts)}
+
+})
+
+
+
+
+
+})
 router.delete("/contact/:id",function(req,res){
     console.log("IN ROUTER DELETE METHOD")
     
