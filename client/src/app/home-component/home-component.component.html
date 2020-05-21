@@ -2,7 +2,7 @@
 
 
 
-      <form *ngFor ="let k of contact" >
+      <form >
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">First Name :</label>
             
@@ -86,7 +86,7 @@
         
         <div class="form-group row">
             <div >
-                <button type="submit" class="btn btn-primary"> Edit </button>
+                <button type="submit" class="btn btn-primary" (click)="editContact(k)"> Edit </button>
    
               <button style="margin-left: 10px;" (click)="deleteContact(k)" class="btn btn-danger" >Delete</button>
             </div>

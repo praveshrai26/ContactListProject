@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../contact.service';
 import {Contact} from '../contact';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
+
 
 @Component({
   selector: 'app-add-profile',
@@ -9,15 +11,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-profile.component.css']
 })
 export class AddProfileComponent implements OnInit {
-  contact :Contact[];
-  constructor(private contactService:ContactService,private route:Router) { 
-    this.contact=[];
-  }
+    contact :Contact[];
+    con :Contact
   
+  _id;
   firstName;
   lastName;
   phoneNumber;
   refBy;
+  k
     currentLocation;
     locationPref;
     itExp;
@@ -31,37 +33,70 @@ export class AddProfileComponent implements OnInit {
     l2date;
     l1Com;
     l2Com;
+  constructor(private contactService:ContactService,private route:Router,router:ActivatedRoute) { 
+    this.contact=[]
+    this.con=new Contact
+    this.con._id=router.snapshot.params['id'];
+    console.log(this.con._id)
+    if(this.con._id){
+      console.log("in if")
+      
+      this.contactService.getContactById(this.con._id).subscribe(res =>{
+        this.con =res.json();
+        console.log("return from backend after getting by id")
+      console.log(this.con)
+      
+      
+      
+       
+  
+        
+      });
+      
+     
+    } 
+    
+    
+    
+
+    
+  }
+  
   ngOnInit() {
+    
+    
   }
 
   addContact(){
+    console.log("IN ADD CONTACT METHOD"+this.con.firstName)
     const contacts={
-    firstName:this.firstName,
-    lastName:this.lastName,
-    phoneNumber:this.phoneNumber,
-    refBy:this.refBy,
-    currentLocation:this.currentLocation,
-    locationPref:this.locationPref,
-    itExp:this.itExp,
-    rpaExp:this.rpaExp,
-    noticePeriod:this.noticePeriod,
-    l1:this.l1,
-    l2:this.l2,
-    l1Stat:this.l1Stat,
-    l2Stat:this.l2Stat,
-    l1date:this.l1date,
-    l2date:this.l2date,
-    l1Com:this.l1Com,
-    l2Com:this.l2Com
+    _id:this.con._id,
+    firstName:this.con.firstName,
+    lastName:this.con.lastName,
+    phoneNumber:this.con.phoneNumber,
+    refBy:this.con.refBy,
+    currentLocation:this.con.currentLocation,
+    locationPref:this.con.locationPref,
+    itExp:this.con.itExp,
+    rpaExp:this.con.rpaExp,
+    noticePeriod:this.con.noticePeriod,
+    l1:this.con.l1,
+    l2:this.con.l2,
+    l1Stat:this.con.l1Stat,
+    l2Stat:this.con.l2Stat,
+    l1date:this.con.l1date,
+    l2date:this.con.l2date,
+    l1Com:this.con.l1Com,
+    l2Com:this.con.l2Com
   }
-  console.log(contacts.l1date);
+  
     
     this.contactService.addContact(contacts).subscribe(res=>
       {
         console.log(res.json())
         this.contact.push(contacts);
       });
-      
+      this.con=new Contact
       this.firstName="";
       this.lastName="";
       this.phoneNumber="";

@@ -13,6 +13,7 @@ import{AddProfileComponent} from './add-profile/add-profile.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
     LoginComponent,
     AddProfileComponent,
     ProfileDetailsComponent
+    
 
   ],
   imports: [
@@ -42,6 +44,11 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
           path : 'profile/:id',
           component: HomeComponentComponent
          },
+         {
+          path :  'edit/:id',
+          component: AddProfileComponent
+         },
+
          {
           path : '',
           component: ProfileDetailsComponent

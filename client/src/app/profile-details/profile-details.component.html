@@ -6,7 +6,8 @@
         <h4>{{k.firstName}} {{k.lastName}}</h4>
         <p>{{k.phoneNumber}}</p>
         
-        <p><a [routerLink]="['profile',k.firstName]"  class="btn btn-primary" role="button">View</a></p>
+        <p><a [routerLink]="['profile',k._id]"  class="btn btn-primary" role="button">View</a></p>
+        
       </div>
     </div>
   </div>

@@ -11,15 +11,21 @@ val:any[];
   constructor(private http:Http) { }
   
 getContactByName(name){
+  //http://localhost:3000/api/contact 
 return(this.http.get('/api/contact/'+name))
 
 
+}
+getContactById(id){
+  console.log("in getCOntactById method "+id)
+  return(this.http.get('/api/contactbyid/'+id));
 }
   getContacts(){
     // .subscribe(res=>{this.val=res.json()}))
 
     
-   return(this.http.get('api/contact'));
+   return(this.http.get('/api/contact'));
+   //http://localhost:3000/api/contact
   //  .subscribe(res=>{
   //    this.val = res.json();
   //   });

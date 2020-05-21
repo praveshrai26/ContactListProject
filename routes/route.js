@@ -3,6 +3,7 @@ const router=express.Router();
 const contact=require('../models/contacts');
 const login=require('../models/loginDetails');
 var session= require('express-session')
+var mongodb = require('mongoose');
 
 
 
@@ -54,6 +55,7 @@ contact.find({},function(err,contacts){
 
 router.post('/contacts',function(req,res){
 let newContact = new contact({
+    
     firstName:req.body.firstName,
     lastName:req.body.lastName,
     phoneNumber:req.body.phoneNumber,
@@ -72,21 +74,66 @@ let newContact = new contact({
       l1Com:req.body.l1Com,
       l2Com:req.body.l2Com, 
 });
-console.log(newContact);
-newContact.save(function(err,contact){
-    console.log(contact.l1Date)
-if(err){
-res.json({msg : "failed to insert"});
-}
-else{
+
+console.log("before checking already exsisting condition")
+contact.findById(req.body._id).count(function(err,count){// change to find contact by id
+    console.log(count)
+        if(count>0){
+            console.log("updating contact")
+            contact.findByIdAndDelete(req.body._id,function(err,res){// cahnge to delete by id
+                if(err)
+                console.log(err)
+                else
+                console.log("deleted")
+            })
+
+        }
+        else{
+            console.log("new contacts")
+        }
+        console.log("before saving the contact")
+        newContact.save(function(err,contact){
+           
+        if(err){
+            console.log(err)
+        res.json({msg : "failed to insert"});
+        }
+        else{
+            
+            res.json({msg : "contact added sucessfully"});
+        }
     
-    res.json({msg : "contact added sucessfully"});
-}
+       
+       /* console.log(contacts)
+        
+        */
+        
+        }); 
+    
 
+})
+})
+ 
 
-});  
-
-});
+router.get("/contactbyid/:id",function(req,res){
+    console.log("in getcontactbyid in node")
+    console.log(req.params.id);
+    contact.findById(req.params.id,function(err,contacts){
+        if(err){
+            console.log(err)
+        }
+        else
+        {
+            console.log(contacts)
+        res.json(contacts)}
+    
+    })
+    
+    
+    
+    
+    
+    })
 
 router.get("/contact/:id",function(req,res){
 
@@ -110,7 +157,7 @@ contact.find({firstName:req.params.id},function(err,contacts){
 router.delete("/contact/:id",function(req,res){
     console.log("IN ROUTER DELETE METHOD")
     
-contact.remove({_id:req.params.id},function(err,result){
+contact.deleteOne({_id:req.params.id},function(err,result){
      if(err){
          console.log("error deleting")
     }
