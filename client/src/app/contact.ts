@@ -13,8 +13,8 @@ export class Contact{
     l2:string;
     l1Stat:string;
     l2Stat:string;
-    l1date:Date;
-    l2date:Date;
+    l1date:string;
+    l2date:string;
     l1Com:string;
     l2Com:string;
 }

@@ -3,6 +3,7 @@ import { ContactService } from '../contact.service';
 import {Contact} from '../contact';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -46,7 +47,9 @@ export class AddProfileComponent implements OnInit {
         console.log("return from backend after getting by id")
       console.log(this.con)
       
-      
+      this.con.l1date = new DatePipe('en-US').transform(this.con.l1date, 'yyyy-MM-dd')
+      this.con.l2date = new DatePipe('en-US').transform(this.con.l2date, 'yyyy-MM-dd')
+      console.log(this.con.l1date)
       
        
   

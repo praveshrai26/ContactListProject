@@ -27,6 +27,7 @@ export class HomeComponentComponent implements OnInit {
     l1;
     l2;
     l1Stat;
+   
     l2Stat;
     l1date;
     l2date;
@@ -46,6 +47,7 @@ if(localStorage.getItem('id_token'))
     {
    this.contactService.getContactById(this._id).subscribe(res =>{
       this.k =res.json();
+      console.log("date is "+this.k.l1date)
      
 
       
