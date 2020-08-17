@@ -8,7 +8,7 @@ import 'rxjs';
 })
 export class ContactService {
 val:any[];
-readonly URL="http://localhost:3000"
+readonly URL=""
 
   constructor(private http:Http) { }
 
