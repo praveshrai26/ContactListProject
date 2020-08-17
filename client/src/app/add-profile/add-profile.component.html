@@ -2,9 +2,9 @@
 
 
 
- 
+
 <div class="container">
-<form (submit)="addContact()" >
+<form  >
   <div class="row">
     <div class="col-md-4">
   First Name<input type="text" required="required"  [(ngModel)]="con.firstName" name="firstName" class="form-control">
@@ -52,10 +52,27 @@ Phone Number<input type="text" required="required"   [(ngModel)]="con.phoneNumbe
 
 
   </div>
-<input type="submit" style="margin-top: 20px;" class="btn btn-primary">
+  <button type="button" class="btn btn-primary" style="margin-top: 20px;" (click)="addContact()"  data-toggle="modal" data-target="#exampleModal">
+    Add Profile
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        
+        <div class="modal-body">
+         Profile Successfully Added
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
 </form>
 
 </div>
-
 
 

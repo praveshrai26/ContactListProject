@@ -11,7 +11,7 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./home-component.component.css']
 })
 export class HomeComponentComponent implements OnInit {
-
+isDeleted:boolean;
     k:Contact;
     _id;
     searchText;
@@ -47,7 +47,7 @@ if(localStorage.getItem('id_token'))
     {
    this.contactService.getContactById(this._id).subscribe(res =>{
       this.k =res.json();
-      console.log("date is "+this.k.l1date)
+      console.log(this.k)
      
 
       
@@ -68,6 +68,7 @@ if(localStorage.getItem('id_token'))
     
     this.contactService.deleteContact(k._id).subscribe(res=>{
       console.log("del response is"+res.status)
+      this.isDeleted=true
     })
     this.route.navigate(['/contact'])
 

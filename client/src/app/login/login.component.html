@@ -1,15 +1,18 @@
-<h3>Please Login </h3>
-
-<form method="POST" (submit)="onLogin()" >
+<div style="width: 100%;height:600px;  background-color:lightslategrey; margin-top: 0px;">
+<div class="container align-items-center" style="width: 400px; height: fit-content  ; background-color:lightsteelblue; position:relative; top: 100px;">
+  <h3 > Login Please! </h3>
+<form method="POST" (submit)="onLogin()"  >
 <div class="form-group">
   <label for="uid">User ID</label>
-  <input [(ngModel)]="id" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="uid" >
+  <input [(ngModel)]="id" name="uid" type="text" class="form-control" id="uid" >
 </div>
 <div class="form-group">
   <label for="pwd">Password</label>
-  <input [(ngModel)]="pwd" [ngModelOptions]="{standalone: true}" type="password" class="form-control" id="pwd" >
+  <input [(ngModel)]="pwd" name="pwd" type="password" class="form-control" id="pwd" >
 </div>
-<button type="submit"  class="btn btn-primary">Submit</button>
+<button type="submit"  class="btn btn-primary">Login</button>
+<ng-container *ngIf="!isLogin"><div class="alert alert-danger" >invalid id password</div></ng-container>
 
 </form>
-
+</div>
+</div>

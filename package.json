@@ -10,17 +10,21 @@
   "author": "Pravesh Rai",
   "license": "ISC",
   "dependencies": {
+    "@popperjs/core": "^2.4.4",
     "body-parser": "^1.18.3",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.5.2",
     "connect-timeout": "^1.9.0",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "jquery": "^3.5.1",
     "mongoose": "^5.7.13",
+    "ng2-pdf-viewer": "^6.3.2",
     "ngx-filter-pipe": "^2.1.2",
     "nodemailer": "^4.6.7",
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemod": "^1.5.19",
-    "npm": "^6.13.1"
+    "npm": "^6.14.7",
+    "popper.js": "^1.16.1"
   }
 }

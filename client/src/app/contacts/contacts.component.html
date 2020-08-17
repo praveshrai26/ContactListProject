@@ -1,10 +1,10 @@
 
 
-<div class="jumbotron " style="height: 4cm;">
+<div class="jumbotron " style="height: 4cm; width: 100%;">
     
   <h3>Welcome To Profile Tracker</h3>
   
-  <button class="btn btn-danger" style="margin-left:30cm;" (click)="logout()">Logout</button>
+  <button class="btn btn-danger" style="float: right; margin-right: 20px; position: relative;" (click)="logout()">Logout</button>
   
 </div>
 
@@ -29,7 +29,7 @@
 
 </div> -->
 
-<app-root></app-root>
+<router-outlet></router-outlet>
 <!-- <form (submit)="addContact()" >
   First Name<input type="text" style="margin-left: 10px;" [(ngModel)]="firstName" name="firstName" class="form-control">
   Last Name<input type="text" style="margin-left: 10px;" [(ngModel)]="lastName" name="lastName" class="form-control">

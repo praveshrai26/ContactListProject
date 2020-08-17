@@ -11,6 +11,9 @@ var app=express();
 
 app.use(session({secret:'shhh'}))
 //router.use('/',express.static(''))
+router.get("/",function(req,res){
+    res.json({"name":"Pravesh"})
+})
 router.post("/login",function(req,res){
     console.log("in route login")
     
@@ -19,7 +22,7 @@ router.post("/login",function(req,res){
     var password=req.body.pwd;
     console.log(id,password)
  login.find({$and:[{uid:id},{pwd:password}]}).count(function(err,count){
-     console.log(err)
+     console.log("finding"+count)
      if(count>0){
       
         console.log("true login "+count)

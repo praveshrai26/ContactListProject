@@ -14,6 +14,7 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,8 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
     HttpModule,
     BrowserModule,
     FormsModule,
+  
+    
    
     
     

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
 id:any;
 pwd:any;
-login=false;
+isLogin:boolean=true;
   ngOnInit() {
 
   }
@@ -26,10 +26,13 @@ login=false;
     if(res.json()=="passed"){
     
       localStorage.setItem('id_token','xyz'+this.id)
+      this.isLogin=true
       this.route.navigate(['/contact'])
 
     }
-    else{this.route.navigate(['/login'])}
+    else{
+      this.isLogin=false
+    }
     
     })
     

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../contact.service';
 import {Contact} from '../contact';
 import { Router, ActivatedRoute } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+
 import { DatePipe } from '@angular/common';
 
 
@@ -34,6 +34,7 @@ export class AddProfileComponent implements OnInit {
     l2date;
     l1Com;
     l2Com;
+    added:boolean=false
   constructor(private contactService:ContactService,private route:Router,router:ActivatedRoute) { 
     this.contact=[]
     this.con=new Contact
