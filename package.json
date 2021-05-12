@@ -21,7 +21,7 @@
     "mongoose": "^5.7.13",
     "ng2-pdf-viewer": "^6.3.2",
     "ngx-filter-pipe": "^2.1.2",
-    "nodemailer": "^4.6.7",
+    "nodemailer": "^6.4.16",
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemod": "^1.5.19",
     "npm": "^6.14.7",
